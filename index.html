@@ -1,0 +1,456 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microfinance Admin</title>
+    <link rel="stylesheet" href="/asset/bulma.min.css">
+    <link rel="stylesheet" href="/asset/tabulator_bulma.min.css">
+    <link rel="stylesheet" href="/asset/swal.min.css">
+
+    <link rel="stylesheet" href="./package/fontawesome-free-5.13.1-web/fontawesome-free-5.13.1-web/css/all.min.css">
+
+    <link rel="stylesheet" href="./package/select/virtual-select.min.css">
+    <link rel="stylesheet" href="./styles/spinner/spinner.css">
+    <link rel="stylesheet" href="./styles/custom.css">
+
+
+
+</head>
+<body class="container">
+    <article id="app" style="display:grid;height: 100vh;" data-component="app">
+        <div class="columns  is-mobile is-gapless">
+            <div class="column is-narrow" name="sidebar-container">
+            </div>
+            <article class="column right-side">
+                <nav class="navbar" role="navigation" aria-label="main navigation" id="header" data-component="header">
+                    <div class="navbar-brand">
+
+                        <a class="navbar-item" data-event="cke45">
+                            <h2 class="subtitle">Microfinance Loan System</h2>
+                        </a>
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navi" data-toggle="ckt42" name="burger" data-event="cke46">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div id="navi" class="navbar-menu" data-toggle="ckt43">
+                        <div class="navbar-start">
+                        </div>
+                        <div class="navbar-end">
+                            <div class="navbar-item">
+                                <a class="button is-primary" data-event="cke47">
+                                    <strong>Account</strong>
+                                </a>
+                            </div>                            
+                            <div class="navbar-item">
+                                <a class="button is-light" data-event="cke48">
+                                    Log out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+                <div class="section">
+                    <div class="toolbar-container"></div>
+                    <div class="search-container"></div>
+                    <div class="table-container" style="margin: 1rem 0rem;"></div>
+                </div>
+            </article>
+        </div>
+    </article>
+
+
+    <!--components templates-->
+
+    <template id="profile">
+        <div class="profile">
+            <div class="box">
+                <div class="container">
+                    <button class="modal-close is-large" aria-label="close" data-event="cke49"></button>
+                    <div class="section">
+                        <h1 class="title is-2">Profile</h1>
+                        <h3 class="subtitle is-5" data-bind="ckm13"></h3>
+                        <div class="columns main-container">
+                            <div class="column box">
+                                <table class="table is-bordered is-striped is-hoverable">
+                                    <tbody>
+                                        <tr data-for="ckf37" style="display:none" class="cake-template" data-for-template="ckf37">
+                                            <td>{{key}}</td>
+                                            <td>{{value}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="column box">
+                                <div class="">
+                                    <table class="table is-bordered is-striped is-hoverable">
+                                        <tbody>
+                                            <tr>
+                                                <td>Current Loans</td>
+                                                <td data-bind="ckm14">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Savings</td>
+                                                <td data-bind="ckm15">0</td>
+                                            </tr>
+                                            <tr>
+                                                <td>CBU</td>
+                                                <td data-bind="ckm16">0</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                    </div>    
+                </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="sidebar">
+        <aside id="sidebar" data-component="sidebar" class="menu has-background-black" name="sidebar" data-event="cke50">
+            <p class="menu-label">General</p>
+            <ul class="menu-list">
+                <li><a class="" data-name="dashboard">Dashboard</a></li>
+            </ul>
+            <p class="menu-label">Review</p>
+            <ul class="menu-list">
+                <li><a data-name="new_collections">New Collections</a><span data-bind="ckm17" data-class="cc0" class="tag is-danger is-hidden">0</span></li>
+                <li><a data-name="new_withdraw">New Withdraw</a><span data-bind="ckm18" data-class="cc1" class="tag is-danger is-hidden">0</span></li>
+                <li><a data-name="new_loans">New Loans</a><span data-bind="ckm19" data-class="cc2" class="tag is-danger is-hidden">0</span></li>
+                <li><a data-name="new_members">New Members</a><span data-bind="ckm20" data-class="cc3" class="tag is-danger is-hidden">0</span></li>
+            </ul>
+            <p class="menu-label">Administration</p>
+            <ul class="menu-list">
+                <li><a data-name="members">Members</a></li>
+                <li><a data-name="products">Products</a></li>
+                <li><a data-name="officers">Account Officers</a></li>
+                <li><a data-name="centers">Centers</a></li>
+            </ul>
+            <p class="menu-label">Transactions</p>
+            <ul class="menu-list">
+                <li><a data-name="loans">Loans</a></li>
+                <li><a data-name="collections">Collections</a></li>
+                <li><a data-name="withdraw">Withdraw</a></li> 
+            </ul>
+            <p class="menu-label">Reports</p>
+            <ul class="menu-list">
+                <li><a data-name="aging">Aging</a></li>
+                <li><a data-name="cbu">CBU</a></li>
+                <li><a data-name="summary">Summary</a></li>
+                <li><a data-name="monthly">Monthly</a></li>
+            </ul>
+            <a style="font-size: 28px; color:white;margin-top:3rem; text-align:center; display:block" data-name="toggle">
+                <i class="fa fa-chevron-circle-left"></i>
+            </a>
+        </aside>
+    </template>
+
+    <template id="table">
+        <article>
+            <div class="buttons">
+                <button class="button is-danger is-hidden" data-event="cke51" data-class="cc4">Clear Filter</button>
+            </div>
+            <section class="table-content" id="dtable" data-container="table" data-animate="cka6"></section>
+        </article>
+    </template>
+
+    <template id="radio">
+        <div class="field is-grouped" name="radio-container" data-animate="cka7">
+            <div class="control cake-template" data-for="ckf38" style="display:none" data-for-template="ckf38">
+                <button class="button {{ctx}}" name="{{id}}" data-role="radio">
+                    <span class="icon is-small">
+                        <i class="fa {{icon}}"></i>
+                    </span>
+                    <span>{{display}}</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+
+
+    <template id="spinner">
+        <style>
+            #dots-container{
+                z-index: 1000;
+            }
+        </style>
+        <div id="dots-container" data-animate="cka8" data-event="cke52">
+            <div class="dots-4"></div>
+        </div>
+    </template>
+
+    <template id="filters">
+        <!--advance search form-->
+        <form class="filters-form">
+            <div class="control">
+                <input class="input" type="text" placeholder="first name">
+              </div>
+            <div class="control">
+                <input class="input" type="text" placeholder="middle name">
+              </div>
+            <div class="control">
+                <input class="input" type="text" placeholder="last name">
+              </div>
+              <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" type="submit">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" type="reset">Cancel</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" data-event="cke53">Filters</button>
+                </div>
+              </div>
+        </form>
+    </template>
+
+    <template id="toolbar">
+        <div class="tabs is-toggle is-right" data-animate="cka9">
+            <ul data-event="cke54">
+                <li data-for="ckf39" style="display:none" class="cake-template" data-for-template="ckf39">
+                    <a data-name="{{id}}" data-toggle="ckt44">
+                        <span class="icon is-small"><i class="fa {{icon}}" aria-hidden="true"></i></span>
+                        <span>{{display}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </template>
+
+    <template id="modal">
+        <style>
+            #modal-content{
+                z-index:1000;
+            }
+        </style>
+        <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div id="modal-content" data-container="modal" data-animate="cka10"></div>
+            <button class="modal-close is-large" aria-label="close" data-event="cke55"></button>
+        </div>
+    </template>
+
+
+
+    <template id="form">
+        <form class="box" data-event="cke56" data-animate="cka11" data-container="form">
+            <h2 class="title is-4" data-bind="ckm21"></h2>
+            <div class="field">
+                <div class="form-control cake-template" data-for="ckf40" style="display:none" data-for-template="ckf40">
+                    <div class="field">
+                        <label class="label">{{title}}</label>
+                        <div class="control">
+                            <div data-switch="cks30" class="cake-template">
+
+                                <input data-case="cks30-cksc31" class="input" name="{{field}}" type="{{type}}" placeholder="{{title}}" data-if="ci5" data-if-bind="{{field}}">
+                                <select data-case="cks30-cksc32" class="input" name="{{field}}" type="{{type}}" placeholder="{{title}}">
+                                    <option data-for-auto="true" data-for="ckf41" data-for-update="ckfu34" data-for-bind-key="field" data-for-bind-val="{{field}}" value="{{value}}" style="display:none display:none" class="cake-template cake-template" data-for-template="ckf41">{{display}}</option>
+                                </select>
+                                <div class="virtual-container" data-case="cks30-cksc33" name="{{field}}" type="{{type}}" placeholder="{{title}}" id="{{field}}"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="field is-grouped">
+                <div class="control">
+                  <button class="button is-link" type="submit">Submit</button>
+                </div>
+                <div class="control">
+                  <button class="button is-link is-light" type="reset">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </template>
+
+    <template id="select">
+        <div></div>
+    </template>
+
+    <template id="center-preview">
+        <style>
+            .field-label{
+                flex-grow: 2;
+            }
+        </style>
+        <div class="modal-card" data-animate="cka12">
+            <header class="modal-card-head"> 
+                <form data-event="cke57" style="width:100%">
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                          <label class="label">Transaction Date:</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                              <div class="select is-fullwidth">
+                                <select name="trans_date">
+                                  <option aria-readonly="true" readonly="">choose date</option> 
+                                  <option data-for-update="ckfu35" data-for-bind-key="value" data-for-bind-val="trans_date" value="{{value}}" style="display:none" class="cake-template" data-for-template="ckfu35">{{display}}</option> 
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="field is-horizontal">
+                        <div class="field-label is-normal">
+                            <label class="label">Center:</label>
+                          </div>
+                          <div class="field-body">
+                            <div class="field">
+                              <div class="control">
+                                <div class="select is-fullwidth">
+                                  <select name="center_id">
+                                    <option aria-readonly="true" readonly="">choose center</option> 
+                                    <option data-for-update="ckfu36" data-for-bind-key="value" data-for-bind-val="center_id" value="{{value}}" style="display:none" class="cake-template" data-for-template="ckfu36">{{display}}</option> 
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </div>
+
+                    <div class="field is-horizontal">
+                        <div class="field-label">
+                          <!-- Left empty for spacing -->
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                              <button class="button is-primary" type="submit">
+                                Search
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </form>
+ 
+            </header>
+            <section class="modal-card-body">
+                <table class="table is-hoverable is-bordered is-fullwidth">
+                    <thead>
+                        <tr>
+                            <th>Desc</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>New Member</td>
+                            <td data-bind="ckm22">0</td>
+                        </tr>
+                        <tr>
+                            <td>New Loan</td>
+                            <td data-bind="ckm23">0</td>
+                        </tr>
+                        <tr>
+                            <td>New Withdraw</td>
+                            <td data-bind="ckm24">0</td>
+                        </tr>
+                        <tr>
+                            <td>New Collections</td>
+                            <td data-bind="ckm25">0</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Refund</td>
+                            <td data-bind="ckm26">0</td>
+                        </tr>
+                        <tr>
+                            <td>Loan Interest</td>
+                            <td data-bind="ckm27">0</td>
+                        </tr>
+                        <tr>
+                            <td>CBU</td>
+                            <td data-bind="ckm28">0</td>
+                        </tr>
+                        <tr>
+                            <td>Savings</td>
+                            <td data-bind="ckm29">0</td>
+                        </tr>   
+                    </tbody>
+                </table>
+            </section>
+            <footer class="modal-card-foot">
+              <button class="button is-success" data-event="cke58">Validate</button>
+              <button class="button" data-event="cke59">Cancel</button>
+            </footer>
+        </div>
+    </template>
+
+
+
+    <!-----------end----------->
+
+
+
+    <script src="/asset/client-service.js"></script>
+
+    <script defer="" src="/asset/socket.io-client.js"></script>
+
+    <script async="" src="/asset/pouchdb-7.2.1.js"></script>
+
+    <script async="" src="/asset/date.js"></script>
+
+    <script async="" src="/asset/currency.js"></script>
+
+    <script src="/asset/tabulator.js"></script>
+
+    
+    <script src="/asset/swal.js"></script>
+    
+    <script src="./package/select/virtual-select.min.js"></script>
+    <script async="" src="./package/zipcelx-master/lib/standalone.js"></script>
+
+
+    <script src="/asset/cake-utils.js"></script>
+    <script src="/asset/cake-pollyfill.js"></script>
+    <script src="/asset/cake-attributes.js"></script>
+    <script src="/asset/cake-mo.js"></script>
+    <script src="/asset/cake-databinding.js"></script>
+    <script src="/asset/cake-observer.js"></script>
+    <script src="/asset/cake-persist.js"></script>
+    <script src="/asset/cake-hash.js"></script>
+    <script src="/asset/cake-piece.js"></script>
+    <script src="/asset/cake-prototype.js"></script>
+    <script src="/asset/cake-storage.js"></script>
+    <script src="/asset/cake-form.js"></script>
+    <script src="/asset/cake-template-proto.js"></script>
+    <script src="/asset/cake-templates.js"></script>
+    <script src="/asset/cake-component.js"></script>
+    <script src="/asset/cake-components.js"></script>
+
+
+    <script defer="" src="components/app.js"></script>
+    <script defer="" src="components/header.js"></script>
+    <script defer="" src="components/form.js"></script>
+    <script defer="" src="components/modal.js"></script>
+    <script defer="" src="components/select.js"></script>
+    <script defer="" src="components/profile.js"></script>
+    <script defer="" src="components/socket.js"></script>
+    <script defer="" src="components/center-preview.js"></script>
+    <script defer="" src="components/resize.js"></script>
+    <script defer="" src="components/model-remote.js"></script>
+    <script defer="" src="components/model-local.js"></script>
+    <script defer="" src="components/virtual.js"></script>
+    <script defer="" src="components/radio.js"></script>
+    <script defer="" src="components/notify.js"></script>
+    <script defer="" src="components/sidebar.js"></script>
+    <script defer="" src="components/sync.js"></script>
+    <script defer="" src="components/spinner.js"></script>
+    <script defer="" src="components/table.js"></script>
+    <script defer="" src="components/toolbar.js"></script>
+
+ 
+
+
+
+</body></html>
